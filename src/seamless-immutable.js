@@ -451,7 +451,7 @@
       return makeImmutable(new Date(obj.getTime()));
     } else {
       // Don't freeze the object we were given; make a clone and use that.
-      var prototype = options && options.prototype;
+      var prototype = Object.getPrototypeOf(obj); // options && options.prototype;
       var instantiateEmptyObject =
         (!prototype || prototype === Object.prototype) ?
           instantiatePlainObject : (function() { return Object.create(prototype); });
